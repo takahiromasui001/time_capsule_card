@@ -1,8 +1,8 @@
 namespace :cards do
-  desc "指定したユーザーのカードサンプルデータを作成 (例: EMAIL=user@example.com bin/rails cards:seed)"
+  desc '指定したユーザーのカードサンプルデータを作成 (例: EMAIL=user@example.com bin/rails cards:seed)'
   task seed: :environment do
     email = ENV['EMAIL']
-    abort "Usage: EMAIL=user@example.com bin/rails cards:seed" if email.blank?
+    abort 'Usage: EMAIL=user@example.com bin/rails cards:seed' if email.blank?
 
     user = User.find_by(email: email)
     abort "User not found: #{email}" unless user
