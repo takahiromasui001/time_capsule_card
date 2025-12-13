@@ -2,7 +2,15 @@
 inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 
 # Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+
+# シングルクォートを許容（Ruby コミュニティの一般的なスタイル）
+# Rails 生成ファイルは除外
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+  Exclude:
+    - 'Gemfile'
+    - 'config/**/*'
+
+# 配列括弧内のスペースなしを許容 `[a, b]` not `[ a, b ]`
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false
