@@ -19,4 +19,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy', as: 'logout'
 
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
+
+  resources :cards, only: [:create, :destroy] do
+  end
 end
