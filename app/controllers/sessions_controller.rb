@@ -3,8 +3,7 @@ class SessionsController < ApplicationController
 
   # ログイン画面
   def new
-    # redirect_to dashboard_path if logged_in?
-    # redirect_to dashboard_path
+    redirect_to dashboard_path if logged_in?
   end
 
   # Google OAuth コールバック
@@ -12,7 +11,7 @@ class SessionsController < ApplicationController
     auth = request.env['omniauth.auth']
     user = User.find_or_create_from_auth_hash(auth)
     session[:user_id] = user.id
-    redirect_to root_path, notice: 'Successfully signed in!'
+    redirect_to dashboard_path, notice: 'Successfully signed in!'
   end
 
   # ログアウト
