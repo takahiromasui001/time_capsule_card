@@ -119,6 +119,8 @@ GEM
       logger
     faraday-net_http (3.4.2)
       net-http (~> 0.5)
+    foreman (0.90.0)
+      thor (~> 1.4)
     fugit (1.12.1)
       et-orbi (~> 1.4)
       raabro (~> 1.4)
@@ -434,6 +436,7 @@ DEPENDENCIES
   dotenv-rails (~> 3.2)
   factory_bot_rails (~> 6.5)
   faker (~> 3.5)
+  foreman
   importmap-rails
   jbuilder
   kamal

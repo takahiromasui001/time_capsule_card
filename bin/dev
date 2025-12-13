@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
-if ! gem list foreman -i --silent; then
-  echo "Installing foreman..."
-  gem install foreman
+if ! command -v foreman &> /dev/null; then
+  echo "foreman not found. Run: bundle install"
+  exit 1
 fi
 
 # Default to port 3000 if not specified
