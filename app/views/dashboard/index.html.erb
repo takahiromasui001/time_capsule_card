@@ -1,17 +1,34 @@
-<div class="h-screen flex flex-col">
+<div class="h-screen flex flex-col" data-controller="card card-form">
   <!-- Inbox (上半分) -->
-  <div class="h-1/2 bg-blue-50 p-4">
+  <div class="h-1/2 bg-blue-50 p-4 overflow-y-auto">
     <h2 class="text-xl md:text-2xl font-bold mb-4">Post</h2>
-    <div class="text-gray-500 text-center mt-8">
-      届いたカードがここに表示されます
+    <div id="inbox_cards">
+      <% if @inbox_cards.any? %>
+        <%= render partial: 'cards/inbox_card', collection: @inbox_cards %>
+      <% else %>
+        <div class="text-gray-500 text-center mt-8">
+          届いたカードがここに表示されます
+        </div>
+      <% end %>
     </div>
   </div>
 
   <!-- Desk (下半分) -->
-  <div class="h-1/2 bg-amber-50 p-4">
+  <div class="h-1/2 bg-amber-50 p-4 overflow-y-auto">
     <h2 class="text-xl md:text-2xl font-bold mb-4">Today's Desk</h2>
-    <div class="text-gray-500 text-center mt-8">
-      保留したカードがここに表示されます
+    <div id="desk_cards">
+      <% if @desk_cards.any? %>
+        <%= render partial: 'cards/desk_card', collection: @desk_cards %>
+      <% else %>
+        <div class="text-gray-500 text-center mt-8">
+          保留したカードがここに表示されます
+        </div>
+      <% end %>
     </div>
   </div>
+
+  <!-- Floating Action Button -->
+  <button type="button" data-action="click->card-form#open" class="fixed bottom-6 right-6 w-16 h-16 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 text-3xl flex items-center justify-center">
+    +
+  </button>
 </div>
