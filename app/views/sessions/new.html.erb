@@ -1,0 +1,12 @@
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-4">
+  <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg text-center w-full max-w-md">
+    <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Time Capsule Desk</h1>
+    <p class="text-sm md:text-base text-gray-600 mb-6 md:mb-8">未来への手紙とタスク管理</p>
+
+    <%= button_to "Sign in with Google",
+                  "/auth/google_oauth2",
+                  method: :post,
+                  class: "bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2.5 md:py-3 px-5 md:px-6 rounded-lg transition w-full md:w-auto",
+                  data: { turbo: false } %>
+  </div>
+</div>

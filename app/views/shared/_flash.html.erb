@@ -1,0 +1,14 @@
+<% if flash[:notice] || flash[:alert] %>
+  <div class="fixed top-4 right-4 z-50 max-w-md">
+    <% if flash[:notice] %>
+      <div class="bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg mb-2">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg mb-2">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

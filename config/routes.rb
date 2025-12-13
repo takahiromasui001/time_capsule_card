@@ -12,4 +12,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  root 'sessions#new'
+
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'auth/:provider/callback', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy', as: 'logout'
+
+  # get 'dashboard', to: 'dashboard#index', as: 'dashboard'
 end
