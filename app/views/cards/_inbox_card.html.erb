@@ -1,0 +1,19 @@
+<%= turbo_frame_tag dom_id(inbox_card) do %>
+  <div class="bg-white rounded-lg shadow-md p-4 mb-3">
+    <div class="mb-3">
+      <h3 class="text-lg font-bold text-gray-800"><%= inbox_card.title %></h3>
+      <% if inbox_card.content.present? %>
+        <p class="text-gray-600 mt-2"><%= inbox_card.content %></p>
+      <% end %>
+      <p class="text-xs text-gray-400 mt-2">
+        投函日: <%= inbox_card.created_at.strftime("%Y年%m月%d日") %>
+      </p>
+    </div>
+
+    <div class="flex gap-2">
+      <%= button_to "Keep", '#', method: :post, class: "flex-1 px-3 py-2 bg-amber-500 text-white rounded-md hover:bg-amber-600 text-sm font-medium" %>
+
+      <%= button_to "Done", '#', method: :post, class: "flex-1 px-3 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 text-sm font-medium" %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+<%= turbo_frame_tag dom_id(desk_card) do %>
+  <div class="bg-white rounded-lg shadow-md p-4 mb-3 flex items-start gap-3">
+    <div class="flex-1">
+      <h3 class="text-lg font-bold text-gray-800"><%= desk_card.title %></h3>
+      <% if desk_card.content.present? %>
+        <p class="text-gray-600 mt-2 text-sm"><%= desk_card.content %></p>
+      <% end %>
+      <p class="text-xs text-gray-400 mt-2">
+        投函日: <%= desk_card.created_at.strftime("%Y年%m月%d日") %>
+      </p>
+    </div>
+  </div>
+<% end %>
