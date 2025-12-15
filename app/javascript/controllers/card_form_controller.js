@@ -16,8 +16,10 @@ export default class extends Controller {
   }
 
   handleSubmit(event) {
-    if (event.detail.success) {
+    const { fetchResponse } = event.detail
+    if (fetchResponse && fetchResponse.response.ok) {
       this.close()
+      window.location.reload()
     }
   }
 }
