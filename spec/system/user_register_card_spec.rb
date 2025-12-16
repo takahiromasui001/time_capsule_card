@@ -18,7 +18,9 @@ RSpec.describe 'UserRegisterCard', type: :system do
 
         fill_in 'タイトル', with: '未来への手紙'
         fill_in '内容', with: '1年後の自分へのメッセージです'
-        fill_in '配達日時', with: 1.week.from_now.strftime('%Y-%m-%dT%H:%M')
+
+        scheduled_time = 1.week.from_now
+        page.execute_script("document.querySelector('#card_form_modal input[name=\"card[scheduled_at]\"]').value = '#{scheduled_time.strftime('%Y-%m-%dT%H:%M')}'")
 
         click_button '投函する'
       end

@@ -11,9 +11,15 @@
     </div>
 
     <div class="flex gap-2">
-      <%= button_to "Keep", '#', method: :post, class: "flex-1 px-3 py-2 bg-amber-500 text-white rounded-md hover:bg-amber-600 text-sm font-medium" %>
+      <%= button_to "Keep", card_triage_path(inbox_card, destination: 'desk'), method: :post, class: "flex-1 px-3 py-2 bg-amber-500 text-white rounded-md hover:bg-amber-600 text-sm font-medium" %>
 
-      <%= button_to "Done", '#', method: :post, class: "flex-1 px-3 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 text-sm font-medium" %>
+      <%= button_to "Done", card_triage_path(inbox_card, destination: 'archive'), method: :post, class: "flex-1 px-3 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 text-sm font-medium" %>
+
+      <button type="button" data-action="click->card#showSnoozeForm" data-card-id="<%= inbox_card.id %>" class="flex-1 px-3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 text-sm font-medium">
+        Snooze
+      </button>
     </div>
+
+    <%= render 'cards/snooze_form', card: inbox_card %>
   </div>
 <% end %>

@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
 
   resources :cards, only: [:create, :destroy] do
+    resource :triage, only: [:create], controller: 'card/triages'
   end
 end
