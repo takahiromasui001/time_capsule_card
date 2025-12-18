@@ -8,7 +8,8 @@ class DailyCardSetup
 
     deliver_scheduled_cards
     reset_desk_cards
-    mark_setup_done
+
+    @user.update!(last_reset_date: Date.current)
   end
 
   private
@@ -19,9 +20,5 @@ class DailyCardSetup
 
   def reset_desk_cards
     @user.cards.where(status: :on_desk).update_all(status: 'arrived')
-  end
-
-  def mark_setup_done
-    @user.update!(last_reset_date: Date.current)
   end
 end
