@@ -235,22 +235,20 @@ end
 
 ```ruby
 Rails.application.routes.draw do
+  root 'sessions#new'
+
   # 認証
   get 'login', to: 'sessions#new', as: :login
-  post 'auth/:provider/callback', to: 'sessions#create'
-  get 'auth/failure', to: 'sessions#failure'
+  get 'auth/:provider/callback', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy', as: :logout
 
-  # メインアプリ
-  root 'dashboard#index'
+  get 'dashboard', to: 'dashboard#index', as: 'dashboard'
 
-  # Cards
+  # Cards（RESTfulリソース設計）
   resources :cards, only: [:create, :destroy] do
-    member do
-      patch :keep
-      patch :done
-      patch :snooze
-    end
+    resource :desk, only: [:create], controller: 'card/desks'
+    resource :archive, only: [:create], controller: 'card/archives'
+    resource :snooze, only: [:create], controller: 'card/snoozes'
   end
 
   get "up" => "rails/health#show", as: :rails_health_check
@@ -295,10 +293,25 @@ end
 **ファイル**: `app/controllers/cards_controller.rb`
 
 - `create`: カード作成（scheduled 状態）
-- `keep`: ポスト → 机へ移動
-- `done`: 完了（アーカイブ）
-- `snooze`: 再スケジュール
 - `destroy`: カード削除
+
+#### Card::DesksController
+
+**ファイル**: `app/controllers/card/desks_controller.rb`
+
+- `create`: ポスト → 机へ移動（Keep）
+
+#### Card::ArchivesController
+
+**ファイル**: `app/controllers/card/archives_controller.rb`
+
+- `create`: 完了（Done）
+
+#### Card::SnoozesController
+
+**ファイル**: `app/controllers/card/snoozes_controller.rb`
+
+- `create`: 再スケジュール（Snooze）
 
 すべて Turbo Stream 対応で、ページ遷移なしで動作
 
@@ -601,44 +614,11 @@ end
 
 #### コントローラースペック
 
-**ファイル**: `spec/controllers/cards_controller_spec.rb`
+**ファイル**: `spec/system/` 以下にシステムスペックとして実装
 
-```ruby
-require 'rails_helper'
-
-RSpec.describe CardsController, type: :controller do
-  let(:user) { create(:user) }
-
-  before { sign_in(user) }
-
-  describe 'POST #create' do
-    let(:card_params) do
-      { title: 'New Card', content: 'Content', scheduled_at: 1.week.from_now }
-    end
-
-    it 'creates a new card' do
-      expect {
-        post :create, params: { card: card_params }
-      }.to change(Card, :count).by(1)
-    end
-
-    it 'sets status to scheduled' do
-      post :create, params: { card: card_params }
-      expect(Card.last.status).to eq('scheduled')
-    end
-  end
-
-  describe 'PATCH #keep' do
-    let(:card) { create(:card, :arrived, user: user) }
-
-    it 'moves card to desk' do
-      patch :keep, params: { id: card.id }
-      card.reload
-      expect(card.status).to eq('on_desk')
-    end
-  end
-end
-```
+- `user_keep_card_spec.rb` - Keep機能のテスト
+- `user_archive_card_spec.rb` - Done機能のテスト
+- `user_snooze_card_spec.rb` - Snooze機能のテスト
 
 #### サポートファイル
 
@@ -786,7 +766,10 @@ end
 **コントローラー・ビュー**
 
 - [ ] DashboardController 作成
-- [ ] CardsController 作成（create, keep, done, snooze, destroy）
+- [ ] CardsController 作成（create, destroy）
+- [ ] Card::DesksController 作成（create = Keep）
+- [ ] Card::ArchivesController 作成（create = Done）
+- [ ] Card::SnoozesController 作成（create = Snooze）
 - [ ] ルート設定（dashboard, cards）
 - [ ] dashboard/index.html.erb 作成（上下 2 分割）
 - [ ] cards/\_form.html.erb 作成（カード作成フォーム）
@@ -815,7 +798,9 @@ end
 - [ ] spec/factories/cards.rb 作成
 - [ ] spec/models/user_spec.rb 作成
 - [ ] spec/models/card_spec.rb 作成
-- [ ] spec/controllers/cards_controller_spec.rb 作成
+- [ ] spec/system/user_keep_card_spec.rb 作成
+- [ ] spec/system/user_archive_card_spec.rb 作成
+- [ ] spec/system/user_snooze_card_spec.rb 作成
 - [ ] spec/controllers/dashboard_controller_spec.rb 作成（自動処理のテスト）
 - [ ] `rspec` で全テスト通過確認
 
@@ -852,9 +837,9 @@ end
 1. **`app/models/user.rb`** - ユーザーモデル（OAuth 認証、自動リセット日付管理）
 2. **`app/models/card.rb`** - コアビジネスロジック（ステータス遷移）
 3. **`app/controllers/dashboard_controller.rb`** - 自動配達・自動リセット処理
-4. **`app/controllers/cards_controller.rb`** - カード操作の中心
-5. **`app/views/dashboard/index.html.erb`** - メイン UI（上下 2 分割）
-6. **`app/javascript/controllers/card_controller.js`** - フロントエンドインタラクション
+4. **`app/controllers/cards_controller.rb`** - カード作成・削除
+5. **`app/controllers/card/`** - Keep/Done/Snooze の各コントローラー
+6. **`app/views/dashboard/index.html.erb`** - メイン UI（上下 2 分割）
 7. **`config/routes.rb`** - ルート定義
 
 ---
