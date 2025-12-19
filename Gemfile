@@ -71,4 +71,5 @@ group :test do
   gem "shoulda-matchers", "~> 7.0"
   gem "capybara"
   gem "selenium-webdriver"
+  gem "rspec-parameterized", "~> 2.0"
 end

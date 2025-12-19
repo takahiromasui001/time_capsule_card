@@ -10,4 +10,6 @@ class Card < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 200 }
   validates :scheduled_at, presence: true
+
+  scope :should_arrive, -> { where(status: :scheduled).where('scheduled_at <= ?', Time.current) }
 end
