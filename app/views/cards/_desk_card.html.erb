@@ -9,5 +9,6 @@
         投函日: <%= desk_card.created_at.strftime("%Y年%m月%d日") %>
       </p>
     </div>
+    <%= button_to 'Done', card_archive_path(desk_card), method: :post, class: 'px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 text-sm font-medium' %>
   </div>
 <% end %>
