@@ -24,4 +24,8 @@ Rails.application.routes.draw do
     resource :archive, only: [:create], controller: 'card/archives'
     resource :snooze, only: [:create], controller: 'card/snoozes'
   end
+
+  namespace :cards do
+    resources :scheduled, only: [:index]
+  end
 end
