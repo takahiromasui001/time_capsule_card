@@ -1,0 +1,31 @@
+<div class="max-w-4xl mx-auto">
+  <h1 class="text-2xl font-bold mb-6">Scheduled Cards</h1>
+
+  <div class="flex gap-2 mb-6">
+    <% scheduled_periods.each do |period| %>
+      <% active = @current_period == period[:key] %>
+      <%= link_to period[:label], cards_scheduled_index_path(period: period[:key]),
+          class: "px-4 py-2 rounded #{active ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}" %>
+    <% end %>
+  </div>
+
+  <% if @cards.any? %>
+    <div class="space-y-3">
+      <% @cards.each do |card| %>
+        <div class="bg-white rounded-lg shadow-md p-4">
+          <h3 class="text-lg font-bold text-gray-800"><%= card.title %></h3>
+          <% if card.content.present? %>
+            <p class="text-gray-600 mt-2"><%= card.content %></p>
+          <% end %>
+          <p class="text-xs text-gray-400 mt-2">
+            到着予定: <%= card.scheduled_at.strftime('%Y年%m月%d日') %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="text-gray-500 text-center mt-8">
+      投函済みのカードがありません
+    </div>
+  <% end %>
+</div>

@@ -616,9 +616,9 @@ end
 
 **ファイル**: `spec/system/` 以下にシステムスペックとして実装
 
-- `user_keep_card_spec.rb` - Keep機能のテスト
-- `user_archive_card_spec.rb` - Done機能のテスト
-- `user_snooze_card_spec.rb` - Snooze機能のテスト
+- `user_keep_card_spec.rb` - Keep 機能のテスト
+- `user_archive_card_spec.rb` - Done 機能のテスト
+- `user_snooze_card_spec.rb` - Snooze 機能のテスト
 
 #### サポートファイル
 
@@ -740,78 +740,78 @@ end
 
 **セットアップ**
 
-- [ ] Gemfile 更新（omniauth, omniauth-google-oauth2, omniauth-rails_csrf_protection, tailwindcss-rails, dotenv-rails, rspec-rails, factory_bot_rails, faker, shoulda-matchers）
-- [ ] `bundle install`
-- [ ] RSpec セットアップ（`rails generate rspec:install`）
-- [ ] spec/rails_helper.rb に FactoryBot, Shoulda Matchers 設定追加
-- [ ] Tailwind CSS 導入（`rails tailwindcss:install`）
-- [ ] .env 作成（GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET）
-- [ ] Google Cloud Console でプロジェクト・OAuth 設定
-- [ ] omniauth.rb 作成（config/initializers/）
+- [x] Gemfile 更新（omniauth, omniauth-google-oauth2, omniauth-rails_csrf_protection, tailwindcss-rails, dotenv-rails, rspec-rails, factory_bot_rails, faker, shoulda-matchers）
+- [x] `bundle install`
+- [x] RSpec セットアップ（`rails generate rspec:install`）
+- [x] spec/rails_helper.rb に FactoryBot, Shoulda Matchers 設定追加
+- [x] Tailwind CSS 導入（`rails tailwindcss:install`）
+- [x] .env 作成（GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET）
+- [x] Google Cloud Console でプロジェクト・OAuth 設定
+- [x] omniauth.rb 作成（config/initializers/）
 
 **データベース**
 
-- [ ] User モデル・マイグレーション作成（provider, uid, last_reset_date を含む）
-- [ ] Card モデル・マイグレーション作成
-- [ ] `rails db:migrate`
-- [ ] FactoryBot factories 作成（users.rb, cards.rb）
+- [x] User モデル・マイグレーション作成（provider, uid, last_reset_date を含む）
+- [x] Card モデル・マイグレーション作成
+- [x] `rails db:migrate`
+- [x] FactoryBot factories 作成（users.rb, cards.rb）
 
 **認証**
 
-- [ ] SessionsController 作成（new, create, destroy, failure）
-- [ ] ApplicationController に認証ヘルパー追加
-- [ ] ログイン画面作成（sessions/new.html.erb）
-- [ ] ルート設定（認証関連）
+- [x] SessionsController 作成（new, create, destroy, failure）
+- [x] ApplicationController に認証ヘルパー追加
+- [x] ログイン画面作成（sessions/new.html.erb）
+- [x] ルート設定（認証関連）
 
 **コントローラー・ビュー**
 
-- [ ] DashboardController 作成
-- [ ] CardsController 作成（create, destroy）
-- [ ] Card::DesksController 作成（create = Keep）
-- [ ] Card::ArchivesController 作成（create = Done）
-- [ ] Card::SnoozesController 作成（create = Snooze）
-- [ ] ルート設定（dashboard, cards）
-- [ ] dashboard/index.html.erb 作成（上下 2 分割）
-- [ ] cards/\_form.html.erb 作成（カード作成フォーム）
-- [ ] cards/\_inbox_card.html.erb 作成
-- [ ] cards/\_desk_card.html.erb 作成
+- [x] DashboardController 作成
+- [x] CardsController 作成（create, destroy）
+- [x] Card::DesksController 作成（create = Keep）
+- [x] Card::ArchivesController 作成（create = Done）
+- [x] Card::SnoozesController 作成（create = Snooze）
+- [x] ルート設定（dashboard, cards）
+- [x] dashboard/index.html.erb 作成（上下 2 分割）
+- [x] cards/\_form.html.erb 作成（カード作成フォーム）
+- [x] cards/\_inbox_card.html.erb 作成
+- [x] cards/\_desk_card.html.erb 作成
 
 **フロントエンド**
 
-- [ ] card_controller.js 作成
-- [ ] inbox_controller.js 作成
-- [ ] form_controller.js 作成
-- [ ] modal_controller.js 作成
-- [ ] Tailwind 基本スタイル適用
+- [x] card_controller.js 作成
+- [x] inbox_controller.js 作成
+- [x] form_controller.js 作成
+- [x] modal_controller.js 作成
+- [x] Tailwind 基本スタイル適用
 
 **自動処理**
 
-- [ ] DashboardController に自動配達処理追加（deliver_scheduled_cards）
-- [ ] DashboardController に自動リセット処理追加（reset_desk_if_new_day）
-- [ ] 自動処理のテスト作成
+- [x] DashboardController に自動配達処理追加（deliver_scheduled_cards）
+- [x] DashboardController に自動リセット処理追加（reset_desk_if_new_day）
+- [x] 自動処理のテスト作成
 
 **テスト（RSpec）**
 
-- [ ] spec/rails_helper.rb 設定（FactoryBot, OmniAuth mock）
-- [ ] spec/support/auth_helper.rb 作成
-- [ ] spec/factories/users.rb 作成
-- [ ] spec/factories/cards.rb 作成
-- [ ] spec/models/user_spec.rb 作成
-- [ ] spec/models/card_spec.rb 作成
-- [ ] spec/system/user_keep_card_spec.rb 作成
-- [ ] spec/system/user_archive_card_spec.rb 作成
-- [ ] spec/system/user_snooze_card_spec.rb 作成
-- [ ] spec/controllers/dashboard_controller_spec.rb 作成（自動処理のテスト）
-- [ ] `rspec` で全テスト通過確認
+- [x] spec/rails_helper.rb 設定（FactoryBot, OmniAuth mock）
+- [x] spec/support/auth_helper.rb 作成
+- [x] spec/factories/users.rb 作成
+- [x] spec/factories/cards.rb 作成
+- [x] spec/models/user_spec.rb 作成
+- [x] spec/models/card_spec.rb 作成
+- [x] spec/system/user_keep_card_spec.rb 作成
+- [x] spec/system/user_archive_card_spec.rb 作成
+- [x] spec/system/user_snooze_card_spec.rb 作成
+- [x] spec/controllers/dashboard_controller_spec.rb 作成（自動処理のテスト）
+- [x] `rspec` で全テスト通過確認
 
 **動作確認**
 
-- [ ] ローカルで rails server 起動
-- [ ] Google ログイン成功
-- [ ] カード作成・投函
-- [ ] ダッシュボードアクセスでカード配達確認
-- [ ] 仕分け動作（Keep/Done/Snooze）
-- [ ] 日付変更後の自動リセット確認
+- [x] ローカルで rails server 起動
+- [x] Google ログイン成功
+- [x] カード作成・投函
+- [x] ダッシュボードアクセスでカード配達確認
+- [x] 仕分け動作（Keep/Done/Snooze）
+- [x] 日付変更後の自動リセット確認
 
 ### Phase 2 (UI/UX) - 重要
 
