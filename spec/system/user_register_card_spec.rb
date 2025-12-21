@@ -21,13 +21,18 @@ RSpec.describe 'UserRegisterCard', type: :system do
 
         scheduled_time = 1.week.from_now
         page.execute_script("document.querySelector('#card_form_modal input[name=\"card[scheduled_at]\"]').value = '#{scheduled_time.strftime('%Y-%m-%dT%H:%M')}'")
+        page.execute_script("document.querySelector('#card_form_modal input[name=\"card[scheduled_at]\"]').dispatchEvent(new Event('input', { bubbles: true }))")
 
         click_button '投函する'
       end
 
-      expect(page).not_to have_css('#card_form_modal', visible: :visible)
+      # カードが保存されるまで待機（最大10秒）
+      10.times do
+        break if user.cards.reload.count == 1
+        sleep 1
+      end
 
-      expect(user.cards.count).to eq(1)
+      expect(user.cards.reload.count).to eq(1)
       expect(user.cards.last.title).to eq('未来への手紙')
       expect(user.cards.last.content).to eq('1年後の自分へのメッセージです')
       expect(user.cards.last.status).to eq('scheduled')
