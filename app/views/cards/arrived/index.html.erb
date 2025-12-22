@@ -1,5 +1,5 @@
 <div class="max-w-4xl mx-auto">
-  <h1 class="text-2xl font-bold mb-6">Arrived Cards</h1>
+  <%= render 'cards/shared/tabs', current_tab: 'arrived' %>
 
   <% if @cards.any? %>
     <div class="space-y-3">

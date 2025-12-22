@@ -1,0 +1,7 @@
+<div class="flex gap-2 mb-6">
+  <% card_tabs.each do |tab| %>
+    <% active = current_tab == tab[:key] %>
+    <%= link_to tab[:label], tab[:path],
+        class: "px-4 py-2 rounded #{active ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}" %>
+  <% end %>
+</div>

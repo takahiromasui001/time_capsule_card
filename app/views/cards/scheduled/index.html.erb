@@ -1,5 +1,5 @@
 <div class="max-w-4xl mx-auto">
-  <h1 class="text-2xl font-bold mb-6">Scheduled Cards</h1>
+  <%= render 'cards/shared/tabs', current_tab: 'scheduled' %>
 
   <div class="flex gap-2 mb-6">
     <% scheduled_periods.each do |period| %>
