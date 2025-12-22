@@ -28,7 +28,10 @@
       <header class="bg-white shadow">
         <nav class="container mx-auto px-5 py-4 flex justify-between items-center">
           <%= link_to 'Time Capsule Card', dashboard_path, class: 'text-xl font-bold hover:text-gray-600' %>
-          <%= button_to "Logout", logout_path, method: :delete, class: "px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" %>
+          <div class="flex items-center gap-4">
+            <%= link_to 'Cards', cards_scheduled_index_path, class: 'text-gray-600 hover:text-gray-900' %>
+            <%= button_to 'Logout', logout_path, method: :delete, class: 'px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600' %>
+          </div>
         </nav>
       </header>
     <% end %>
