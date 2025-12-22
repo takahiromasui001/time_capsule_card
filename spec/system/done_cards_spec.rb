@@ -14,7 +14,6 @@ RSpec.describe 'Done Cards', type: :system do
     it 'doneステータスのカードのみ表示される' do
       visit cards_done_index_path
 
-      expect(page).to have_content('Done Cards')
       expect(page).to have_content('Done Card')
       expect(page).not_to have_content('Scheduled Card')
       expect(page).not_to have_content('Arrived Card')

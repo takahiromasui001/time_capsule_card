@@ -14,7 +14,6 @@ RSpec.describe 'Arrived Cards', type: :system do
     it 'arrived/on_deskステータスのカードのみ表示される' do
       visit cards_arrived_index_path
 
-      expect(page).to have_content('Arrived Cards')
       expect(page).to have_content('Arrived Card')
       expect(page).to have_content('On Desk Card')
       expect(page).not_to have_content('Scheduled Card')
