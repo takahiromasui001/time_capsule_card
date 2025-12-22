@@ -46,13 +46,19 @@ RSpec.describe DailyCardSetup do
     context '日付が変わっていない場合' do
       before { user.update!(last_reset_date: Date.current) }
 
-      it '何も更新しない' do
+      it '到着日時が過ぎたカードは到着する' do
         scheduled_card = create(:card, user: user, status: :scheduled, scheduled_at: 1.hour.ago)
+
+        setup.run
+
+        expect(scheduled_card.reload.status).to eq('arrived')
+      end
+
+      it '机上のカードはリセットされない' do
         desk_card = create(:card, user: user, status: :on_desk)
 
         setup.run
 
-        expect(scheduled_card.reload.status).to eq('scheduled')
         expect(desk_card.reload.status).to eq('on_desk')
       end
     end
