@@ -27,5 +27,7 @@ Rails.application.routes.draw do
 
   namespace :cards do
     resources :scheduled, only: [:index]
+    resources :arrived, only: [:index]
+    resources :done, only: [:index]
   end
 end

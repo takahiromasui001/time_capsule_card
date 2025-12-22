@@ -1,13 +1,5 @@
 <div class="max-w-4xl mx-auto">
-  <%= render 'cards/shared/tabs', current_tab: 'scheduled' %>
-
-  <div class="flex gap-2 mb-6">
-    <% scheduled_periods.each do |period| %>
-      <% active = @current_period == period[:key] %>
-      <%= link_to period[:label], cards_scheduled_index_path(period: period[:key]),
-          class: "px-4 py-2 rounded #{active ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}" %>
-    <% end %>
-  </div>
+  <%= render 'cards/shared/tabs', current_tab: 'done' %>
 
   <% if @cards.any? %>
     <div class="space-y-3">
@@ -18,14 +10,14 @@
             <p class="text-gray-600 mt-2"><%= card.content %></p>
           <% end %>
           <p class="text-xs text-gray-400 mt-2">
-            到着予定: <%= card.scheduled_at.strftime('%Y年%m月%d日') %>
+            完了日: <%= card.completed_at&.strftime('%Y年%m月%d日') %>
           </p>
         </div>
       <% end %>
     </div>
   <% else %>
     <div class="text-gray-500 text-center mt-8">
-      投函済みのカードがありません
+      完了済みのカードがありません
     </div>
   <% end %>
 </div>
