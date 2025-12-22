@@ -12,15 +12,7 @@
   <% if @cards.any? %>
     <div class="space-y-3">
       <% @cards.each do |card| %>
-        <div class="bg-white rounded-lg shadow-md p-4">
-          <h3 class="text-lg font-bold text-gray-800"><%= card.title %></h3>
-          <% if card.content.present? %>
-            <p class="text-gray-600 mt-2"><%= card.content %></p>
-          <% end %>
-          <p class="text-xs text-gray-400 mt-2">
-            到着予定: <%= card.scheduled_at.strftime('%Y年%m月%d日') %>
-          </p>
-        </div>
+        <%= render 'cards/shared/list_card', card: card, date_label: '到着予定', date_value: card.scheduled_at %>
       <% end %>
     </div>
   <% else %>
