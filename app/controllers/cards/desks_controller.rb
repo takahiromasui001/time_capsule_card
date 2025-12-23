@@ -1,4 +1,4 @@
-class Card::DesksController < ApplicationController
+class Cards::DesksController < ApplicationController
   def create
     @card = current_user.cards.find(params[:card_id])
     @card.update!(status: :on_desk)
