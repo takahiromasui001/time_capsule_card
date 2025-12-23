@@ -1,4 +1,4 @@
-class Card::ArchivesController < ApplicationController
+class Cards::ArchivesController < ApplicationController
   def create
     @card = current_user.cards.find(params[:card_id])
     @card.update!(status: :done, completed_at: Time.current)
