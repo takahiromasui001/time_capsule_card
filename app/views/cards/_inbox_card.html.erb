@@ -1,5 +1,5 @@
 <%= turbo_frame_tag dom_id(inbox_card) do %>
-  <div class="bg-white rounded-lg shadow-md p-4 mb-3">
+  <div class="bg-white rounded-lg shadow-md p-4 mb-3" data-controller="card">
     <div class="mb-3">
       <h3 class="text-lg font-bold text-gray-800"><%= inbox_card.title %></h3>
       <% if inbox_card.content.present? %>

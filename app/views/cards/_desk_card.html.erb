@@ -1,6 +1,6 @@
 <%= turbo_frame_tag dom_id(desk_card) do %>
-  <div class="bg-white rounded-lg shadow-md p-4 mb-3 flex items-start gap-3">
-    <div class="flex-1">
+  <div class="bg-white rounded-lg shadow-md p-4 mb-3" data-controller="card">
+    <div class="mb-3">
       <h3 class="text-lg font-bold text-gray-800"><%= desk_card.title %></h3>
       <% if desk_card.content.present? %>
         <p class="text-gray-600 mt-2 text-sm"><%= desk_card.content %></p>
@@ -9,6 +9,15 @@
         投函日: <%= desk_card.created_at.strftime("%Y年%m月%d日") %>
       </p>
     </div>
-    <%= button_to 'Done', card_archive_path(desk_card), method: :post, class: 'px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 text-sm font-medium' %>
+
+    <div class="flex gap-2">
+      <%= button_to 'Done', card_archive_path(desk_card), method: :post, class: 'flex-1 px-3 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 text-sm font-medium' %>
+
+      <button type="button" data-action="click->card#showSnoozeForm" data-card-id="<%= desk_card.id %>" class="flex-1 px-3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 text-sm font-medium">
+        Snooze
+      </button>
+    </div>
+
+    <%= render 'cards/snooze_form', card: desk_card %>
   </div>
 <% end %>
