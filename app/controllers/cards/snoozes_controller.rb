@@ -1,4 +1,4 @@
-class Card::SnoozesController < ApplicationController
+class Cards::SnoozesController < ApplicationController
   def create
     @card = current_user.cards.find(params[:card_id])
     @card.update!(

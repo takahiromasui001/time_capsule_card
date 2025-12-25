@@ -10,9 +10,11 @@ export default class extends Controller {
 
   close() {
     this.modalTarget.classList.add('hidden')
-    // フォームをリセット（前回の入力が残らないように）
+    // フォームと入力値をリセット
     const form = this.modalTarget.querySelector('form')
     if (form) form.reset()
+    // バリデーションエラーメッセージを削除
+    this.modalTarget.querySelectorAll('[data-field-error]').forEach(el => el.remove())
   }
 
   handleSubmit(event) {

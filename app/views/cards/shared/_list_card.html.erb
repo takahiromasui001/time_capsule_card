@@ -1,0 +1,9 @@
+<div class="bg-white rounded-lg shadow-md p-4">
+  <h3 class="text-lg font-bold text-gray-800"><%= card.title %></h3>
+  <% if card.content.present? %>
+    <p class="text-gray-600 mt-2"><%= card.content %></p>
+  <% end %>
+  <p class="text-xs text-gray-400 mt-2">
+    <%= date_label %>: <%= date_value&.strftime('%Y年%m月%d日 %H:%M') %>
+  </p>
+</div>

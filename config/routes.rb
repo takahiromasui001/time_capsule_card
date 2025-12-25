@@ -20,9 +20,11 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
 
   resources :cards, only: [:create, :destroy] do
-    resource :desk, only: [:create], controller: 'card/desks'
-    resource :archive, only: [:create], controller: 'card/archives'
-    resource :snooze, only: [:create], controller: 'card/snoozes'
+    scope module: :cards do
+      resource :desk, only: [:create]
+      resource :archive, only: [:create]
+      resource :snooze, only: [:create]
+    end
   end
 
   namespace :cards do

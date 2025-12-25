@@ -1,0 +1,3 @@
+<% if record.errors[field].any? %>
+  <p class="text-red-500 text-sm mt-1" data-field-error><%= record.errors.full_messages_for(field).first %></p>
+<% end %>

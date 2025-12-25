@@ -6,7 +6,7 @@ class CardsController < ApplicationController
     if @card.save
       head :ok
     else
-      render turbo_stream: turbo_stream.replace('card_form_modal', partial: 'cards/form', locals: { card: @card })
+      render turbo_stream: turbo_stream.replace('card_form_content', partial: 'cards/form_content', locals: { card: @card }), status: :unprocessable_entity
     end
   end
 

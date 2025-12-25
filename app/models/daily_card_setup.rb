@@ -4,11 +4,11 @@ class DailyCardSetup
   end
 
   def run
+    deliver_scheduled_cards
+
     return if @user.last_reset_date == Date.current
 
-    deliver_scheduled_cards
     reset_desk_cards
-
     @user.update!(last_reset_date: Date.current)
   end
 
