@@ -1,6 +1,6 @@
-<div class="h-screen flex flex-col" data-controller="card-form">
-  <!-- Inbox (上半分) -->
-  <div class="h-1/2 bg-blue-50 p-4 overflow-y-auto">
+<div class="min-h-screen w-full flex flex-col" data-controller="card-form">
+  <!-- Post -->
+  <div class="min-h-32 bg-blue-50 p-4">
     <h2 class="text-xl md:text-2xl font-bold mb-4">Post</h2>
     <div id="inbox_cards">
       <% if @inbox_cards.any? %>
@@ -13,8 +13,8 @@
     </div>
   </div>
 
-  <!-- Desk (下半分) -->
-  <div class="h-1/2 bg-amber-50 p-4 overflow-y-auto">
+  <!-- Desk -->
+  <div class="min-h-32 bg-amber-50 p-4">
     <h2 class="text-xl md:text-2xl font-bold mb-4">Today's Desk</h2>
     <div id="desk_cards">
       <% if @desk_cards.any? %>
