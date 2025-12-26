@@ -18,11 +18,11 @@
     </div>
 
     <div class="flex gap-2">
-      <%= button_to 'Done', card_archive_path(desk_card), method: :post, class: 'flex-1 px-3 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 text-sm font-medium' %>
-
       <button type="button" data-action="click->card#showSnoozeForm" data-card-id="<%= desk_card.id %>" class="flex-1 px-3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 text-sm font-medium">
         Snooze
       </button>
+
+      <%= button_to 'Done', card_archive_path(desk_card), method: :post, class: 'flex-1 px-3 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 text-sm font-medium' %>
     </div>
 
     <%= render 'cards/snooze_form', card: desk_card %>
