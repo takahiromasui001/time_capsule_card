@@ -1,4 +1,4 @@
-<div class="max-w-4xl mx-auto">
+<div class="max-w-4xl mx-auto" data-controller="card-form">
   <%= render 'cards/shared/tabs', current_tab: 'scheduled' %>
 
   <div class="flex gap-2 mb-6">
@@ -12,7 +12,7 @@
   <% if @cards.any? %>
     <div class="space-y-3">
       <% @cards.each do |card| %>
-        <%= render 'cards/shared/list_card', card: card, date_label: '到着予定', date_value: card.scheduled_at %>
+        <%= render 'cards/shared/list_card', card: card, date_label: '到着予定', date_value: card.scheduled_at, editable: true %>
       <% end %>
     </div>
   <% else %>
@@ -20,4 +20,7 @@
       投函済みのカードがありません
     </div>
   <% end %>
+
+  <!-- Card Form Modal -->
+  <%= render 'cards/form', card: current_user.cards.build %>
 </div>
