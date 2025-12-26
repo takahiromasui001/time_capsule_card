@@ -28,9 +28,9 @@
   </div>
 
   <!-- Floating Action Button -->
-  <button type="button" data-action="click->card-form#open" class="fixed bottom-6 right-6 w-16 h-16 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 text-3xl flex items-center justify-center">
+  <%= link_to new_card_path, class: 'fixed bottom-6 right-6 w-16 h-16 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 text-3xl flex items-center justify-center', data: { action: "click->card-form#open", turbo_stream: true } do %>
     +
-  </button>
+  <% end %>
 
   <!-- Card Form Modal -->
   <%= render 'cards/form', card: @new_card %>

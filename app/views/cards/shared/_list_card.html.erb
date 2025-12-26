@@ -1,5 +1,10 @@
 <div class="bg-white rounded-lg shadow-md p-4">
-  <h3 class="text-lg font-bold text-gray-800"><%= card.title %></h3>
+  <div class="flex justify-between items-start">
+    <h3 class="text-lg font-bold text-gray-800"><%= card.title %></h3>
+    <% if local_assigns[:editable] %>
+      <%= render 'shared/edit_button', card: card %>
+    <% end %>
+  </div>
   <% if card.content.present? %>
     <p class="text-gray-600 mt-2"><%= card.content %></p>
   <% end %>
