@@ -1,7 +1,14 @@
 <%= turbo_frame_tag dom_id(desk_card) do %>
   <div class="bg-white rounded-lg shadow-md p-4 mb-3" data-controller="card">
     <div class="mb-3">
-      <h3 class="text-lg font-bold text-gray-800"><%= desk_card.title %></h3>
+      <div class="flex justify-between items-start">
+        <h3 class="text-lg font-bold text-gray-800"><%= desk_card.title %></h3>
+        <%= link_to edit_card_path(desk_card), class: 'text-gray-400 hover:text-gray-600', data: { action: "click->card-form#open", turbo_stream: true } do %>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+          </svg>
+        <% end %>
+      </div>
       <% if desk_card.content.present? %>
         <p class="text-gray-600 mt-2 text-sm"><%= desk_card.content %></p>
       <% end %>
