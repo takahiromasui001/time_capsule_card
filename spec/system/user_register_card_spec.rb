@@ -9,9 +9,9 @@ RSpec.describe 'UserRegisterCard', type: :system do
     end
 
     it 'ユーザーがフォームからカードを登録できる', :js do
-      expect(page).to have_button('+')
+      expect(page).to have_link('+')
 
-      find('button', text: '+').click
+      find('a', text: '+').click
 
       within('#card_form_modal') do
         expect(page).to have_content('新しいカードを投函')
