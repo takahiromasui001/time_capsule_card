@@ -2,7 +2,7 @@
   <div class="flex justify-between items-start">
     <h3 class="text-lg font-bold text-gray-800"><%= card.title %></h3>
     <% if local_assigns[:editable] %>
-      <%= render 'shared/edit_button', card: card %>
+      <%= render 'shared/edit_button', card:%>
     <% end %>
   </div>
   <% if card.content.present? %>
