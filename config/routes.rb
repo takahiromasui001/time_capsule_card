@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :cards, only: [:new, :create, :destroy, :edit, :update] do
     scope module: :cards do
       resource :desk, only: [:create]
-      resource :archive, only: [:create]
+      resource :archive, only: [:create, :destroy]
       resource :snooze, only: [:create]
     end
   end
