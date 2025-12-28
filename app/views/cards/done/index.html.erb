@@ -1,10 +1,10 @@
-<div class="w-full max-w-4xl mx-auto px-4">
+<div class="w-full max-w-4xl mx-auto px-4" data-controller="card-form">
   <%= render 'cards/shared/tabs', current_tab: 'done' %>
 
   <% if @cards.any? %>
     <div class="space-y-3">
       <% @cards.each do |card| %>
-        <%= render 'cards/shared/list_card', card: card, date_label: '完了日', date_value: card.completed_at %>
+        <%= render 'cards/shared/list_card', card:, date_label: '完了日', date_value: card.completed_at, editable: true %>
       <% end %>
     </div>
   <% else %>
@@ -12,4 +12,7 @@
       完了済みのカードがありません
     </div>
   <% end %>
+
+  <!-- Card Form Modal -->
+  <%= render 'cards/form', card: current_user.cards.build %>
 </div>
