@@ -7,6 +7,10 @@
         <%= render 'cards/shared/list_card', card:, date_label: '完了日', date_value: card.completed_at, editable: true %>
       <% end %>
     </div>
+
+    <div class="mt-6">
+      <%== @pagy.series_nav %>
+    </div>
   <% else %>
     <div class="text-gray-500 text-center mt-8">
       完了済みのカードがありません
