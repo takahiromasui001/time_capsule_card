@@ -9,14 +9,16 @@ RSpec.describe 'CSV Export', type: :system do
       create(:card, user: user, title: 'Card 2', content: 'Content 2', scheduled_at: 2.days.ago, status: :done)
     end
 
-    it 'カード一覧ページにエクスポートボタンが表示される' do
+    it 'ユーザーメニューにエクスポートリンクが表示される' do
       visit cards_arrived_index_path
+      find('[data-action="click->dropdown#toggle"]').click
 
       expect(page).to have_link('CSVエクスポート')
     end
 
     it 'CSVファイルをダウンロードできる' do
       visit cards_arrived_index_path
+      find('[data-action="click->dropdown#toggle"]').click
       click_link 'CSVエクスポート'
 
       expect(page.response_headers['Content-Type']).to include('text/csv')
