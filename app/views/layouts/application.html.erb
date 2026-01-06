@@ -23,7 +23,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body data-controller="import-form">
     <% if logged_in? %>
       <header class="bg-white shadow">
         <nav class="container mx-auto px-5 py-4 flex justify-between items-center">
@@ -43,5 +43,9 @@
     </main>
 
     <div id="toast_container"></div>
+
+    <% if logged_in? %>
+      <%= render 'cards/imports/form' %>
+    <% end %>
   </body>
 </html>

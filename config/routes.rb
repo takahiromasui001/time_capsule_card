@@ -32,5 +32,6 @@ Rails.application.routes.draw do
     resources :arrived, only: [:index]
     resources :done, only: [:index]
     resource :export, only: [:show]
+    resource :import, only: [:create]
   end
 end
