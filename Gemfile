@@ -60,6 +60,7 @@ gem "omniauth-rails_csrf_protection", "~> 2.0"
 gem "tailwindcss-rails", "~> 4.4"
 
 gem "pagy"
+gem "csv"
 
 gem "dotenv-rails", "~> 3.2", groups: [:development, :test]
 
