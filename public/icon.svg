@@ -1,3 +1,32 @@
-<svg width="512" height="512" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="256" cy="256" r="256" fill="red"/>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="256" fill="#0D9488"/>
+
+  <!-- Envelope body -->
+  <rect x="96" y="160" width="320" height="220" rx="16" fill="#F5F5F4"/>
+
+  <!-- Envelope flap -->
+  <path d="M96 176 L256 300 L416 176" fill="none" stroke="#E7E5E4" stroke-width="8"/>
+
+  <!-- Envelope fold lines -->
+  <path d="M96 160 L256 280 L416 160" fill="#E7E5E4"/>
+
+  <!-- Clock circle -->
+  <circle cx="340" cy="320" r="70" fill="#FCD34D" stroke="#F59E0B" stroke-width="6"/>
+
+  <!-- Clock face -->
+  <circle cx="340" cy="320" r="55" fill="#FFFBEB"/>
+
+  <!-- Clock hour marks -->
+  <circle cx="340" cy="275" r="4" fill="#92400E"/>
+  <circle cx="385" cy="320" r="4" fill="#92400E"/>
+  <circle cx="340" cy="365" r="4" fill="#92400E"/>
+  <circle cx="295" cy="320" r="4" fill="#92400E"/>
+
+  <!-- Clock hands -->
+  <line x1="340" y1="320" x2="340" y2="285" stroke="#0D9488" stroke-width="6" stroke-linecap="round"/>
+  <line x1="340" y1="320" x2="365" y2="335" stroke="#0D9488" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Clock center -->
+  <circle cx="340" cy="320" r="6" fill="#0D9488"/>
 </svg>
