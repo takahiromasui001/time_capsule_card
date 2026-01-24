@@ -62,6 +62,8 @@ gem "tailwindcss-rails", "~> 4.4"
 gem "pagy"
 gem "csv"
 
+gem "litestream"
+
 gem "dotenv-rails", "~> 3.2", groups: [:development, :test]
 
 group :test do
